@@ -1,16 +1,11 @@
 # main imports
-import asyncio
 
 from aiogram import executor
 from aiogram import Bot, Dispatcher, types
 from aiogram import types
 from aiogram.dispatcher.filters import Text
 from vars import *
-from aiogram.types import ReplyKeyboardRemove, \
-    ReplyKeyboardMarkup, KeyboardButton, \
-    InlineKeyboardMarkup, InlineKeyboardButton
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputFile
-import asyncio
+from aiogram.types import InputFile
 from aiogram.utils.markdown import link
 
 # dotenv
@@ -18,7 +13,8 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-bot = Bot(os.getenv('TOKEN'))
+PROXY = 'http://proxy-server:3128'
+bot = Bot(os.environ.get('TOKEN'), proxy=PROXY)
 dp = Dispatcher(bot)
 
 @dp.message_handler(commands="start")
